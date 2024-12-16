@@ -9,7 +9,7 @@ namespace WeatherWiseMAUI.Services
     public class ApiService
     {
         private readonly HttpClient _httpClient;
-        private readonly string _baseUrl = "https://www.appsnacks2024.somee.com/";
+        private readonly string _baseUrl = "https://www.appsnacks2024.somee.com/"; // API SOMEE
         private readonly ILogger<ApiService> _logger;
 
         JsonSerializerOptions _serializerOptions;
