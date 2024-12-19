@@ -2,11 +2,23 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WeatherWiseMAUI.Pages.HomePage"
-             Title="HomePage">
-    <VerticalStackLayout>
-        <Label 
-            Text="HomePage!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+             Title="Home"
+             BackgroundColor="#A8D8B9"
+             NavigationPage.HasNavigationBar="False">
+
+    <VerticalStackLayout Padding="20" Spacing="20" VerticalOptions="Center" HorizontalOptions="Center">
+
+        <!-- Saudação -->
+        <Label Text="Bem-vindo ao WeatherWise!"
+               FontSize="24"
+               FontAttributes="Bold"
+               TextColor="#3B5A2A"
+               HorizontalOptions="Center" />
+
+        <!-- Mensagem ao usuário -->
+        <Label Text="Estamos felizes em tê-lo conosco."
+               FontSize="18"
+               TextColor="#3B5A2A"
+               HorizontalOptions="Center" />
     </VerticalStackLayout>
 </ContentPage>

@@ -24,6 +24,7 @@ namespace WeatherWiseMAUI
 
             builder.Services.AddHttpClient();
             builder.Services.AddSingleton<ApiService>();
+            builder.Services.AddSingleton<ApiWeatherService>();
             builder.Services.AddSingleton<IValidator, Validations.Validator>();
 
             return builder.Build();
