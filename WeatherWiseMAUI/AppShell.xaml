@@ -8,16 +8,4 @@
        Shell.TabBarTitleColor="#3B5A2A"
        Shell.TabBarUnselectedColor="#FFFFFF">
 
-    <TabBar>
-        <Tab Title="Home" Icon="home.png">
-            <ShellContent
-                ContentTemplate="{DataTemplate pages:HomePage}" />
-        </Tab>
-
-        <Tab Title="Perfil" Icon="profile.png">
-            <ShellContent
-                ContentTemplate="{DataTemplate pages:PerfilPage}" />
-        </Tab>
-    </TabBar>
-
 </Shell>

@@ -6,12 +6,14 @@ namespace WeatherWiseMAUI.Pages;
 public partial class LoginPage : ContentPage
 {
     private readonly ApiService _apiService;
+    private readonly ApiWeatherService _apiWeatherService;
     private readonly IValidator _validator;
 
-    public LoginPage(ApiService apiService, IValidator validator)
+    public LoginPage(ApiService apiService, ApiWeatherService apiWeatherService, IValidator validator)
     {
         InitializeComponent();
         _apiService = apiService;
+        _apiWeatherService = apiWeatherService;
         _validator = validator;
     }
 
@@ -33,7 +35,7 @@ public partial class LoginPage : ContentPage
 
         if (!response.HasError)
         {
-            Application.Current!.MainPage = new AppShell();
+            Application.Current!.MainPage = new AppShell(_apiService, _apiWeatherService, _validator);
         }
         else
         {
@@ -45,7 +47,7 @@ public partial class LoginPage : ContentPage
     private async void TapRegister_Tapped(object sender, TappedEventArgs e)
     {
 
-        await Navigation.PushAsync(new InscricaoPage(_apiService, _validator));
+        await Navigation.PushAsync(new InscricaoPage(_apiService, _apiWeatherService, _validator));
 
     }
 }

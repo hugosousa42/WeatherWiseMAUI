@@ -6,19 +6,115 @@
              BackgroundColor="#A8D8B9"
              NavigationPage.HasNavigationBar="False">
 
-    <VerticalStackLayout Padding="20" Spacing="20" VerticalOptions="Center" HorizontalOptions="Center">
+    <ScrollView>
+        <StackLayout Padding="20">
+            <Label Text="Cidades Portuguesas"
+                   FontAttributes="Bold"
+                   FontSize="Medium"
+                   TextColor="#3B5A2A"
+                   VerticalOptions="Center" />
+            <CollectionView x:Name="CvCidadesPortuguesas"
+                            ItemsSource="{Binding CidadesPortuguesas}"
+                            SelectionMode="Single"
+                            SelectionChanged="OnCidadeSelected">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal"
+                                       ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border StrokeShape="RoundRectangle 10,10,10,10">
+                            <Grid>
+                                <Image Aspect="Fill"
+                                       HeightRequest="120"
+                                       WidthRequest="120"
+                                       Source="{Binding CaminhoImagem}"/>
+                                <Label TextColor="White"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"
+                                       FontSize="14"
+                                       BackgroundColor="#3B5A2A"
+                                       Padding="5,5"
+                                       VerticalOptions="End"
+                                       HorizontalOptions="FillAndExpand"
+                                       Text="{Binding Nome}"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
-        <!-- Saudação -->
-        <Label Text="Bem-vindo ao WeatherWise!"
-               FontSize="24"
-               FontAttributes="Bold"
-               TextColor="#3B5A2A"
-               HorizontalOptions="Center" />
+            <Label Text="Cidades Europeias"
+                   FontAttributes="Bold"
+                   FontSize="Medium"
+                   TextColor="#3B5A2A"
+                   VerticalOptions="Center" />
+            <CollectionView x:Name="CvCidadesEuropeias"
+                            ItemsSource="{Binding CidadesEuropeias}"
+                            SelectionMode="Single"
+                            SelectionChanged="OnCidadeSelected">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal"
+                                       ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border StrokeShape="RoundRectangle 10,10,10,10">
+                            <Grid>
+                                <Image Aspect="Fill"
+                                       HeightRequest="120"
+                                       WidthRequest="120"
+                                       Source="{Binding CaminhoImagem}"/>
+                                <Label TextColor="White"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"
+                                       FontSize="14"
+                                       BackgroundColor="#3B5A2A"
+                                       Padding="5,5"
+                                       VerticalOptions="End"
+                                       HorizontalOptions="FillAndExpand"
+                                       Text="{Binding Nome}"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
-        <!-- Mensagem ao usuário -->
-        <Label Text="Estamos felizes em tê-lo conosco."
-               FontSize="18"
-               TextColor="#3B5A2A"
-               HorizontalOptions="Center" />
-    </VerticalStackLayout>
+            <Label Text="Cidades do Mundo"
+                   FontAttributes="Bold"
+                   FontSize="Medium"
+                   TextColor="#3B5A2A"
+                   VerticalOptions="Center" />
+            <CollectionView x:Name="CvCidadesMundo"
+                            ItemsSource="{Binding CidadesMundo}"
+                            SelectionMode="Single"
+                            SelectionChanged="OnCidadeSelected">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal"
+                                       ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border StrokeShape="RoundRectangle 10,10,10,10">
+                            <Grid>
+                                <Image Aspect="Fill"
+                                       HeightRequest="120"
+                                       WidthRequest="120"
+                                       Source="{Binding CaminhoImagem}"/>
+                                <Label TextColor="White"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"
+                                       FontSize="14"
+                                       BackgroundColor="#3B5A2A"
+                                       Padding="5,5"
+                                       VerticalOptions="End"
+                                       HorizontalOptions="FillAndExpand"
+                                       Text="{Binding Nome}"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

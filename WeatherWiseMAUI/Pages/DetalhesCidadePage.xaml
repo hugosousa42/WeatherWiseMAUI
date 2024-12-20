@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherWiseMAUI.Pages.DetalhesCidadePage"
+             Title="Detalhes da Cidade"
+             BackgroundColor="#A8D8B9"
+             NavigationPage.HasNavigationBar="False">
+
+    <StackLayout Padding="20">
+        <Label Text="{Binding name}"
+               FontAttributes="Bold"
+               FontSize="Large"
+               TextColor="#3B5A2A"
+               HorizontalOptions="Center" />
+        <Label Text="{Binding main.temp}"
+               FontSize="Medium"
+               TextColor="#3B5A2A"
+               HorizontalOptions="Center" />
+        <Label Text="{Binding weather[0].description}"
+               FontSize="Medium"
+               TextColor="#3B5A2A"
+               HorizontalOptions="Center" />
+        <Label Text="Umidade: {Binding main.humidity}%"
+               FontSize="Medium"
+               TextColor="#3B5A2A"
+               HorizontalOptions="Center" />
+        <Label Text="Pressão: {Binding main.pressure} hPa"
+               FontSize="Medium"
+               TextColor="#3B5A2A"
+               HorizontalOptions="Center" />
+        <Label Text="Velocidade do Vento: {Binding wind.speed} m/s"
+               FontSize="Medium"
+               TextColor="#3B5A2A"
+               HorizontalOptions="Center" />
+        <Label Text="Direção do Vento: {Binding wind.deg}°"
+               FontSize="Medium"
+               TextColor="#3B5A2A"
+               HorizontalOptions="Center" />
+    </StackLayout>
+</ContentPage>

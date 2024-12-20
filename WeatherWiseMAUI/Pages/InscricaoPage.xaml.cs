@@ -6,12 +6,14 @@ namespace WeatherWiseMAUI.Pages;
 public partial class InscricaoPage : ContentPage
 {
     private readonly ApiService _apiService;
+    private readonly ApiWeatherService _apiWeatherService;
     private readonly IValidator _validator;
 
-    public InscricaoPage(ApiService apiService, IValidator validator)
+    public InscricaoPage(ApiService apiService, ApiWeatherService apiWeatherService, IValidator validator)
     {
         InitializeComponent();
         _apiService = apiService;
+        _apiWeatherService = apiWeatherService;
         _validator = validator;
     }
 
@@ -27,7 +29,7 @@ public partial class InscricaoPage : ContentPage
             if (!response.HasError)
             {
                 await DisplayAlert("Aviso", "Sua conta foi criada com sucesso !!", "OK");
-                await Navigation.PushAsync(new LoginPage(_apiService, _validator));
+                await Navigation.PushAsync(new LoginPage(_apiService, _apiWeatherService, _validator));
             }
             else
             {
@@ -48,6 +50,6 @@ public partial class InscricaoPage : ContentPage
 
     private async void TapLogin_TappedAsync(object sender, TappedEventArgs e)
     {
-        await Navigation.PushAsync(new LoginPage(_apiService,_validator));
+        await Navigation.PushAsync(new LoginPage(_apiService, _apiWeatherService, _validator));
     }
 }
