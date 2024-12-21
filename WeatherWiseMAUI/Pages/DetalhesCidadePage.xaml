@@ -7,32 +7,32 @@
              NavigationPage.HasNavigationBar="False">
 
     <StackLayout Padding="20">
-        <Label Text="{Binding name}"
+        <Label Text="{Binding Name}"
                FontAttributes="Bold"
                FontSize="Large"
                TextColor="#3B5A2A"
                HorizontalOptions="Center" />
-        <Label Text="{Binding main.temp}"
+        <Label Text="{Binding Main.Temp, StringFormat='{0}°C'}"
                FontSize="Medium"
                TextColor="#3B5A2A"
                HorizontalOptions="Center" />
-        <Label Text="{Binding weather[0].description}"
+        <Label Text="{Binding Weather[0].Description}"
                FontSize="Medium"
                TextColor="#3B5A2A"
                HorizontalOptions="Center" />
-        <Label Text="Umidade: {Binding main.humidity}%"
+        <Label Text="{Binding Main.Humidity, StringFormat='Umidade: {0}%'}"
                FontSize="Medium"
                TextColor="#3B5A2A"
                HorizontalOptions="Center" />
-        <Label Text="Pressão: {Binding main.pressure} hPa"
+        <Label Text="{Binding Main.Pressure, StringFormat='Pressão: {0} hPa'}"
                FontSize="Medium"
                TextColor="#3B5A2A"
                HorizontalOptions="Center" />
-        <Label Text="Velocidade do Vento: {Binding wind.speed} m/s"
+        <Label Text="{Binding Wind.Speed, StringFormat='Velocidade do Vento: {0} m/s'}"
                FontSize="Medium"
                TextColor="#3B5A2A"
                HorizontalOptions="Center" />
-        <Label Text="Direção do Vento: {Binding wind.deg}°"
+        <Label Text="{Binding Wind.Deg, StringFormat='Direção do Vento: {0}°'}"
                FontSize="Medium"
                TextColor="#3B5A2A"
                HorizontalOptions="Center" />

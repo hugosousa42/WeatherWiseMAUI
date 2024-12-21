@@ -12,28 +12,28 @@ namespace WeatherWiseMAUI.Pages
         {
             InitializeComponent();
             _apiWeatherService = apiWeatherService;
-            LoadWeatherData();
+            //LoadWeatherData();
         }
 
-        private async void LoadWeatherData()
-        {
-            var cities = new List<string> { "Lisboa", "Porto", "Madrid", "Paris" };
-            foreach (var city in cities)
-            {
-                var weatherData = await _apiWeatherService.GetWeatherAsync(city);
-                if (weatherData != null)
-                {
-                    var position = new Location(weatherData.coord.lat, weatherData.coord.lon);
-                    var pin = new Pin
-                    {
-                        Label = $"{city}: {weatherData.main.temp}°C",
-                        Address = weatherData.weather[0].description,
-                        Type = PinType.Place,
-                        Location = position
-                    };
-                    WeatherMap.Pins.Add(pin);
-                }
-            }
-        }
+        //private async void LoadWeatherData()
+        //{
+        //    var cities = new List<string> { "Lisboa", "Porto", "Madrid", "Paris" };
+        //    foreach (var city in cities)
+        //    {
+        //        var weatherData = await _apiWeatherService.GetWeatherAsync(city);
+        //        if (weatherData != null)
+        //        {
+        //            var position = new Location(weatherData.coord.lat, weatherData.coord.lon);
+        //            var pin = new Pin
+        //            {
+        //                Label = $"{city}: {weatherData.main.temp}°C",
+        //                Address = weatherData.weather[0].description,
+        //                Type = PinType.Place,
+        //                Location = position
+        //            };
+        //            WeatherMap.Pins.Add(pin);
+        //        }
+        //    }
+        //}
     }
 }
