@@ -7,7 +7,8 @@ namespace WeatherWiseMAUI.Services
     public class ApiWeatherService
     {
         private readonly HttpClient _httpClient;
-        private readonly string _apiKey = "4c324ec18c2d583aa51ffcedd83c981e"; 
+        private readonly string _apiKey = "4c324ec18c2d583aa51ffcedd83c981e";
+        private readonly string _pexelsApiKey = "oNG8D4iOEzv872MtCgyuAGHv2NngvOpR4fRKrWNenuATtFWMfohVx6eL";
         private readonly ILogger<ApiWeatherService> _logger;
 
         JsonSerializerOptions _serializerOptions;
@@ -51,5 +52,25 @@ namespace WeatherWiseMAUI.Services
                 return null;
             }
         }
+
+        public async Task<string> GetCityImageAsync(string city)
+        {
+            var url = $"https://api.pexels.com/v1/search?query={city}+cityscape&per_page=1";
+
+            // Remover o cabeçalho Authorization se já estiver presente
+            if (_httpClient.DefaultRequestHeaders.Contains("Authorization"))
+            {
+                _httpClient.DefaultRequestHeaders.Remove("Authorization");
+            }
+
+            // Adicionar o cabeçalho Authorization
+            _httpClient.DefaultRequestHeaders.Add("Authorization", _pexelsApiKey);
+
+            var response = await _httpClient.GetStringAsync(url);
+            var jsonDoc = JsonDocument.Parse(response);
+            var imageUrl = jsonDoc.RootElement.GetProperty("photos")[0].GetProperty("src").GetProperty("large").GetString();
+            return imageUrl;
+        }
+
     }
 }

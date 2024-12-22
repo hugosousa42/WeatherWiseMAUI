@@ -22,7 +22,7 @@ namespace WeatherWiseMAUI.Pages
             _apiWeatherService = apiWeatherService;
             _validator = validator;
 
-            // Dados de exemplo
+            // Dados de exemplo com caminhos de imagens estáticas
             CidadesPortuguesas = new ObservableCollection<Cidade>
             {
                 new Cidade { Nome = "Lisboa", CaminhoImagem = "lisboa.png" },
@@ -43,7 +43,7 @@ namespace WeatherWiseMAUI.Pages
                 new Cidade { Nome = "Paris", CaminhoImagem = "paris.png" },
                 new Cidade { Nome = "Londres", CaminhoImagem = "londres.png" },
                 new Cidade { Nome = "Berlim", CaminhoImagem = "berlim.png" },
-                new Cidade { Nome = "Roma", CaminhoImagem = "roma.png" },
+                new Cidade { Nome = "Milão", CaminhoImagem = "milao.png" },
                 new Cidade { Nome = "Amsterdã", CaminhoImagem = "amsterda.png" },
                 new Cidade { Nome = "Bruxelas", CaminhoImagem = "bruxelas.png" },
                 new Cidade { Nome = "Viena", CaminhoImagem = "viena.png" },
@@ -54,15 +54,14 @@ namespace WeatherWiseMAUI.Pages
             CidadesMundo = new ObservableCollection<Cidade>
             {
                 new Cidade { Nome = "Nova York", CaminhoImagem = "nova_york.png" },
-                new Cidade { Nome = "Tóquio", CaminhoImagem = "toquio.png" },
+                new Cidade { Nome = "Bangkok", CaminhoImagem = "bangkok.png" },
                 new Cidade { Nome = "Sydney", CaminhoImagem = "sydney.png" },
                 new Cidade { Nome = "Rio de Janeiro", CaminhoImagem = "rio_de_janeiro.png" },
                 new Cidade { Nome = "Cidade do Cabo", CaminhoImagem = "cidade_do_cabo.png" },
-                new Cidade { Nome = "Pequim", CaminhoImagem = "pequim.png" },
                 new Cidade { Nome = "Moscou", CaminhoImagem = "moscou.png" },
                 new Cidade { Nome = "Dubai", CaminhoImagem = "dubai.png" },
                 new Cidade { Nome = "Mumbai", CaminhoImagem = "mumbai.png" },
-                new Cidade { Nome = "Toronto", CaminhoImagem = "toronto.png" }
+                new Cidade { Nome = "Buenos Aires", CaminhoImagem = "buenos_aires.png" }
             };
 
             BindingContext = this;
@@ -76,8 +75,10 @@ namespace WeatherWiseMAUI.Pages
                 if (selectedCidade != null)
                 {
                     var weatherData = await _apiWeatherService.GetWeatherAsync(selectedCidade.Nome);
+                    var cityImageUrl = await _apiWeatherService.GetCityImageAsync(selectedCidade.Nome);
                     if (weatherData != null)
                     {
+                        weatherData.CityImageUrl = cityImageUrl;
                         await Navigation.PushAsync(new DetalhesCidadePage(weatherData));
                     }
                 }

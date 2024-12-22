@@ -15,6 +15,8 @@
         public int Id { get; set; }
         public string Name { get; set; }
         public int Cod { get; set; }
+
+        public string CityImageUrl { get; set; }
     }
 
     public class Coord

@@ -36,6 +36,8 @@ namespace WeatherWiseMAUI.Pages
         {
             if (e.Item is WeatherData weatherData)
             {
+                var cityImageUrl = await _apiWeatherService.GetCityImageAsync(weatherData.Name);
+                weatherData.CityImageUrl = cityImageUrl;
                 await Navigation.PushAsync(new DetalhesCidadePage(weatherData));
             }
         }
