@@ -61,5 +61,8 @@
         public string Country { get; set; }
         public int Sunrise { get; set; }
         public int Sunset { get; set; }
+
+        public string SunriseTime { get; set; }
+        public string SunsetTime { get; set; } 
     }
 }

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WeatherWiseMAUI.Pages.PrevisaoPage"
-             Title="Previsão do Tempo"
+             x:Class="WeatherWiseMAUI.Pages.BuscaCidadePage"
+             Title="Buscar Cidade"
              BackgroundColor="#A8D8B9"
              NavigationPage.HasNavigationBar="False">
 
     <StackLayout Padding="20">
-        <Label Text="Previsão do Tempo"
+        <Label Text="Buscar Cidade"
                FontAttributes="Bold"
                FontSize="Large"
                TextColor="#3B5A2A"
@@ -18,17 +18,22 @@
         <Button Text="Pesquisar"
                 Clicked="OnSearchButtonClicked"
                 HorizontalOptions="Center" />
-        <ListView x:Name="ForecastListView"
+        <ListView x:Name="WeatherListView"
                   VerticalOptions="FillAndExpand"
-                  HorizontalOptions="FillAndExpand">
+                  HorizontalOptions="FillAndExpand"
+                  ItemTapped="OnItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Padding="10">
-                            <Label Text="{Binding Temperature}"
+                            <Label Text="{Binding Name}"
+                                   FontAttributes="Bold"
                                    FontSize="Medium"
                                    TextColor="#3B5A2A" />
-                            <Label Text="{Binding Description}"
+                            <Label Text="{Binding Main.Temp, StringFormat='{0}°C'}"
+                                   FontSize="Small"
+                                   TextColor="#3B5A2A" />
+                            <Label Text="{Binding Weather[0].Description}"
                                    FontSize="Small"
                                    TextColor="#3B5A2A" />
                         </StackLayout>

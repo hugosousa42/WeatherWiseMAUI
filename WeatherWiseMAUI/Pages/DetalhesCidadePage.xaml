@@ -20,21 +20,66 @@
                FontSize="Medium"
                TextColor="#3B5A2A"
                HorizontalOptions="Center" />
-        <Label Text="{Binding Main.Humidity, StringFormat='Umidade: {0}%'}"
-               FontSize="Medium"
-               TextColor="#3B5A2A"
-               HorizontalOptions="Center" />
-        <Label Text="{Binding Main.Pressure, StringFormat='Pressão: {0} hPa'}"
-               FontSize="Medium"
-               TextColor="#3B5A2A"
-               HorizontalOptions="Center" />
-        <Label Text="{Binding Wind.Speed, StringFormat='Velocidade do Vento: {0} m/s'}"
-               FontSize="Medium"
-               TextColor="#3B5A2A"
-               HorizontalOptions="Center" />
-        <Label Text="{Binding Wind.Deg, StringFormat='Direção do Vento: {0}°'}"
-               FontSize="Medium"
-               TextColor="#3B5A2A"
-               HorizontalOptions="Center" />
+        <Button Text="Mostrar Mais"
+                Clicked="OnShowMoreButtonClicked"
+                HorizontalOptions="Center" />
+        <StackLayout x:Name="MoreInfoStackLayout" IsVisible="False">
+            <Label Text="{Binding Main.Feels_Like, StringFormat='Sensação Térmica: {0}°C'}"
+                   FontSize="Medium"
+                   TextColor="#3B5A2A"
+                   HorizontalOptions="Center" />
+            <Label Text="{Binding Main.Temp_Min, StringFormat='Temp. Mínima: {0}°C'}"
+                   FontSize="Medium"
+                   TextColor="#3B5A2A"
+                   HorizontalOptions="Center" />
+            <Label Text="{Binding Main.Temp_Max, StringFormat='Temp. Máxima: {0}°C'}"
+                   FontSize="Medium"
+                   TextColor="#3B5A2A"
+                   HorizontalOptions="Center" />
+            <Label Text="{Binding Main.Humidity, StringFormat='Umidade: {0}%'}"
+                   FontSize="Medium"
+                   TextColor="#3B5A2A"
+                   HorizontalOptions="Center" />
+            <Label Text="{Binding Main.Pressure, StringFormat='Pressão: {0} hPa'}"
+                   FontSize="Medium"
+                   TextColor="#3B5A2A"
+                   HorizontalOptions="Center" />
+            <Label Text="{Binding Wind.Speed, StringFormat='Velocidade do Vento: {0} m/s'}"
+                   FontSize="Medium"
+                   TextColor="#3B5A2A"
+                   HorizontalOptions="Center" />
+            <Label Text="{Binding Wind.Deg, StringFormat='Direção do Vento: {0}°'}"
+                   FontSize="Medium"
+                   TextColor="#3B5A2A"
+                   HorizontalOptions="Center" />
+            <Label Text="{Binding Wind.Gust, StringFormat='Rajada de Vento: {0} m/s'}"
+                   FontSize="Medium"
+                   TextColor="#3B5A2A"
+                   HorizontalOptions="Center" />
+            <Label Text="{Binding Visibility, StringFormat='Visibilidade: {0} m'}"
+                   FontSize="Medium"
+                   TextColor="#3B5A2A"
+                   HorizontalOptions="Center" />
+            <Label Text="{Binding Clouds.All, StringFormat='Nuvens: {0}%'}"
+                   FontSize="Medium"
+                   TextColor="#3B5A2A"
+                   HorizontalOptions="Center" />
+            <Label Text="{Binding Sys.SunriseTime, StringFormat='Nascer do Sol: {0}'}"
+                   FontSize="Medium"
+                   TextColor="#3B5A2A"
+                   HorizontalOptions="Center" />
+            <Label Text="{Binding Sys.SunsetTime, StringFormat='Pôr do Sol: {0}'}"
+                   FontSize="Medium"
+                   TextColor="#3B5A2A"
+                   HorizontalOptions="Center" />
+            <Label Text="{Binding Coord.Lat, StringFormat='Latitude: {0}'}"
+                   FontSize="Medium"
+                   TextColor="#3B5A2A"
+                   HorizontalOptions="Center" />
+            <Label Text="{Binding Coord.Lon, StringFormat='Longitude: {0}'}"
+                   FontSize="Medium"
+                   TextColor="#3B5A2A"
+                   HorizontalOptions="Center" />
+        </StackLayout>
     </StackLayout>
 </ContentPage>

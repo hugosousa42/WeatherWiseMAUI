@@ -36,5 +36,20 @@ namespace WeatherWiseMAUI.Services
                 return null;
             }
         }
+
+        public async Task<ForecastData> GetForecastAsync(string city)
+        {
+            var url = $"https://api.openweathermap.org/data/2.5/forecast?q={city}&appid={_apiKey}&units=metric";
+            try
+            {
+                var response = await _httpClient.GetStringAsync(url);
+                return JsonSerializer.Deserialize<ForecastData>(response, _serializerOptions);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao obter dados de previsão: {ex.Message}");
+                return null;
+            }
+        }
     }
 }

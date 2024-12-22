@@ -22,9 +22,10 @@ namespace WeatherWiseMAUI
         private void ConfigureShell()
         {
             var homePage = new HomePage(_apiService, _apiWeatherService, _validator);
-            var perfilPage = new PerfilPage();
-            var previsaoPage = new PrevisaoPage(_apiWeatherService);
             var mapaTempoPage = new MapaTempoPage(_apiWeatherService);
+            var buscaCidadePage = new BuscaCidadePage(_apiWeatherService);
+            var previsaoPage = new PrevisaoPage(_apiWeatherService);
+            var perfilPage = new PerfilPage();
             var sobrePage = new SobrePage();
 
             Items.Add(new TabBar
@@ -32,10 +33,11 @@ namespace WeatherWiseMAUI
                 Items =
                 {
                     new ShellContent { Title = "Home", Icon = "home.png", Content = homePage },
-                    new ShellContent { Title = "Perfil", Icon = "profile.png", Content = perfilPage },
-                    new ShellContent { Title = "Previsão", Icon = "forecast.png", Content = previsaoPage },
                     new ShellContent { Title = "Mapa do Tempo", Icon = "map.png", Content = mapaTempoPage },
-                    new ShellContent { Title = "Sobre", Icon = "info.png", Content = sobrePage }
+                    new ShellContent { Title = "Buscar Cidade", Icon = "search.png", Content = buscaCidadePage },
+                    new ShellContent { Title = "Previsão", Icon = "forecast.png", Content = previsaoPage },
+                    new ShellContent { Title = "Perfil", Icon = "profile.png", Content = perfilPage },
+                    new ShellContent { Title = "Sobre", Icon = "info.png", Content = sobrePage },
                 }
             });
         }
