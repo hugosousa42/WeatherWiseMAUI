@@ -61,7 +61,8 @@ namespace WeatherWiseMAUI.Pages
                 new Cidade { Nome = "Moscou", CaminhoImagem = "moscou.png" },
                 new Cidade { Nome = "Dubai", CaminhoImagem = "dubai.png" },
                 new Cidade { Nome = "Mumbai", CaminhoImagem = "mumbai.png" },
-                new Cidade { Nome = "Buenos Aires", CaminhoImagem = "buenos_aires.png" }
+                new Cidade { Nome = "Buenos Aires", CaminhoImagem = "buenos_aires.png" },
+                new Cidade { Nome = "Honolulu", CaminhoImagem = "honolulu.png" }
             };
 
             BindingContext = this;
