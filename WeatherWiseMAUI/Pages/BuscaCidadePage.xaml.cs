@@ -20,8 +20,14 @@ namespace WeatherWiseMAUI.Pages
 
         private async void OnSearchButtonClicked(object sender, EventArgs e)
         {
-            var city = CityEntry.Text;
-            if (!string.IsNullOrEmpty(city))
+            var city = CityEntry.Text?.Trim();
+            if (string.IsNullOrEmpty(city))
+            {
+                await DisplayAlert("Erro", "Por favor, insira o nome de uma cidade.", "OK");
+                return;
+            }
+
+            try
             {
                 var weatherData = await _apiWeatherService.GetWeatherAsync(city);
                 if (weatherData != null)
@@ -29,6 +35,14 @@ namespace WeatherWiseMAUI.Pages
                     WeatherDataList.Clear();
                     WeatherDataList.Add(weatherData);
                 }
+                else
+                {
+                    await DisplayAlert("Erro", "Não foi possível encontrar dados meteorológicos para a cidade informada.", "OK");
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Erro", $"Ocorreu um erro ao buscar os dados: {ex.Message}", "OK");
             }
         }
 
@@ -36,9 +50,16 @@ namespace WeatherWiseMAUI.Pages
         {
             if (e.Item is WeatherData weatherData)
             {
-                var cityImageUrl = await _apiWeatherService.GetCityImageAsync(weatherData.Name);
-                weatherData.CityImageUrl = cityImageUrl;
-                await Navigation.PushAsync(new DetalhesCidadePage(weatherData));
+                try
+                {
+                    var cityImageUrl = await _apiWeatherService.GetCityImageAsync(weatherData.Name);
+                    weatherData.CityImageUrl = cityImageUrl;
+                    await Navigation.PushAsync(new DetalhesCidadePage(weatherData));
+                }
+                catch (Exception ex)
+                {
+                    await DisplayAlert("Erro", $"Ocorreu um erro ao buscar a imagem da cidade: {ex.Message}", "OK");
+                }
             }
         }
     }

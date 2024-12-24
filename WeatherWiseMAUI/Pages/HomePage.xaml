@@ -8,7 +8,7 @@
 
     <ScrollView>
         <StackLayout Padding="20">
-            <Label Text="Cidades Portuguesas"
+            <Label Text="Portugal"
                    FontAttributes="Bold"
                    FontSize="Medium"
                    TextColor="#3B5A2A"
@@ -44,7 +44,7 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <Label Text="Cidades Europeias"
+            <Label Text="Europa"
                    FontAttributes="Bold"
                    FontSize="Medium"
                    TextColor="#3B5A2A"
@@ -80,7 +80,7 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <Label Text="Cidades do Mundo"
+            <Label Text="Populares"
                    FontAttributes="Bold"
                    FontSize="Medium"
                    TextColor="#3B5A2A"

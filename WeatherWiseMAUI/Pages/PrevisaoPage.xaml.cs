@@ -20,11 +20,17 @@ namespace WeatherWiseMAUI.Pages
 
         private async void OnSearchButtonClicked(object sender, EventArgs e)
         {
-            var city = CityEntry.Text;
-            if (!string.IsNullOrEmpty(city))
+            var city = CityEntry.Text?.Trim();
+            if (string.IsNullOrEmpty(city))
+            {
+                await DisplayAlert("Erro", "Por favor, insira o nome de uma cidade.", "OK");
+                return;
+            }
+
+            try
             {
                 var forecastData = await _apiWeatherService.GetForecastAsync(city);
-                if (forecastData != null)
+                if (forecastData?.List?.Count > 0)
                 {
                     Forecasts.Clear();
                     foreach (var forecast in forecastData.List)
@@ -39,6 +45,14 @@ namespace WeatherWiseMAUI.Pages
                         }
                     }
                 }
+                else
+                {
+                    await DisplayAlert("Aviso", "Nenhuma previsão encontrada para a cidade informada.", "OK");
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Erro", $"Ocorreu um erro ao buscar a previsão: {ex.Message}", "OK");
             }
         }
     }

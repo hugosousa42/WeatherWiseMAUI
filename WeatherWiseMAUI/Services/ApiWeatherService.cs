@@ -25,7 +25,7 @@ namespace WeatherWiseMAUI.Services
 
         public async Task<WeatherData> GetWeatherAsync(string city)
         {
-            var url = $"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={_apiKey}&units=metric";
+            var url = $"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={_apiKey}&units=metric&lang=pt";
             try
             {
                 var response = await _httpClient.GetStringAsync(url);
@@ -40,7 +40,7 @@ namespace WeatherWiseMAUI.Services
 
         public async Task<ForecastData> GetForecastAsync(string city)
         {
-            var url = $"https://api.openweathermap.org/data/2.5/forecast?q={city}&appid={_apiKey}&units=metric";
+            var url = $"https://api.openweathermap.org/data/2.5/forecast?q={city}&appid={_apiKey}&units=metric&lang=pt";
             try
             {
                 var response = await _httpClient.GetStringAsync(url);
@@ -71,6 +71,5 @@ namespace WeatherWiseMAUI.Services
             var imageUrl = jsonDoc.RootElement.GetProperty("photos")[0].GetProperty("src").GetProperty("large").GetString();
             return imageUrl;
         }
-
     }
 }
