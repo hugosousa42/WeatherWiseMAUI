@@ -71,6 +71,9 @@
 	  <MauiXaml Update="Pages\BuscaCidadePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\CompararCidadesPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\DetalhesCidadePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

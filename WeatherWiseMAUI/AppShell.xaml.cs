@@ -25,7 +25,7 @@ namespace WeatherWiseMAUI
             var mapaTempoPage = new MapaTempoPage(_apiWeatherService);
             var buscaCidadePage = new BuscaCidadePage(_apiWeatherService);
             var previsaoPage = new PrevisaoPage(_apiWeatherService);
-            var perfilPage = new PerfilPage();
+            var compararCidadesPage = new CompararCidadesPage(_apiWeatherService);
             var sobrePage = new SobrePage();
 
             Items.Add(new TabBar
@@ -36,7 +36,7 @@ namespace WeatherWiseMAUI
                     new ShellContent { Title = "Mapa do Tempo", Icon = "map.png", Content = mapaTempoPage },
                     new ShellContent { Title = "Buscar Cidade", Icon = "search.png", Content = buscaCidadePage },
                     new ShellContent { Title = "Previsão", Icon = "forecast.png", Content = previsaoPage },
-                    new ShellContent { Title = "Perfil", Icon = "profile.png", Content = perfilPage },
+                    new ShellContent { Title = "Comparar Cidades", Icon = "compare.png", Content = compararCidadesPage },
                     new ShellContent { Title = "Sobre", Icon = "info.png", Content = sobrePage },
                 }
             });
