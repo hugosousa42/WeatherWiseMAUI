@@ -9,6 +9,7 @@
             public Main Main { get; set; }
             public List<Weather> Weather { get; set; }
             public string DtTxt { get; set; }
+            public int Dt { get; set; } 
         }
 
         public class Main

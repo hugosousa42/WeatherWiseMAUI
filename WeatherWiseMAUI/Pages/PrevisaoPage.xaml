@@ -32,6 +32,9 @@
                             <Label Text="{Binding Description}"
                                    FontSize="Small"
                                    TextColor="#3B5A2A" />
+                            <Label Text="{Binding Time}"
+                                   FontSize="Small"
+                                   TextColor="#3B5A2A" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

@@ -1,6 +1,10 @@
+using Microsoft.Maui.Controls;
+using System;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
 using WeatherWiseMAUI.Services;
 using WeatherWiseMAUI.Models;
-using System.Collections.ObjectModel;
 
 namespace WeatherWiseMAUI.Pages
 {
@@ -40,7 +44,8 @@ namespace WeatherWiseMAUI.Pages
                             Forecasts.Add(new Forecast
                             {
                                 Temperature = $"{forecast.Main.Temp}°C",
-                                Description = forecast.Weather[0].Description
+                                Description = forecast.Weather[0].Description,
+                                Time = UnixTimeStampToDateTime(forecast.Dt).ToString("HH:mm")
                             });
                         }
                     }
@@ -55,11 +60,20 @@ namespace WeatherWiseMAUI.Pages
                 await DisplayAlert("Erro", $"Ocorreu um erro ao buscar a previsão: {ex.Message}", "OK");
             }
         }
+
+        private DateTime UnixTimeStampToDateTime(double unixTimeStamp)
+        {
+            // Unix timestamp is seconds past epoch
+            System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
+            dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
+            return dtDateTime;
+        }
     }
 
     public class Forecast
     {
         public string Temperature { get; set; }
         public string Description { get; set; }
+        public string Time { get; set; }
     }
 }
