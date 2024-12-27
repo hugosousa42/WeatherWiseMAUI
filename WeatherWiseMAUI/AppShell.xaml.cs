@@ -28,8 +28,11 @@ namespace WeatherWiseMAUI
             var compararCidadesPage = new CompararCidadesPage(_apiWeatherService);
             var sobrePage = new SobrePage();
 
-            Items.Add(new TabBar
+            Items.Add(new FlyoutItem
             {
+                Title = "Home",
+                Icon = "home.png",
+                FlyoutDisplayOptions = FlyoutDisplayOptions.AsMultipleItems,
                 Items =
                 {
                     new ShellContent { Title = "Home", Icon = "home.png", Content = homePage },
@@ -40,6 +43,23 @@ namespace WeatherWiseMAUI
                     new ShellContent { Title = "Sobre", Icon = "info.png", Content = sobrePage },
                 }
             });
+
+            // Adicionando o botão de logout no menu de navegação
+            Items.Add(new MenuItem
+            {
+                Text = "Logout",
+                IconImageSource = "logout.png",
+                Command = new Command(OnLogoutClicked)
+            });
+        }
+
+        private async void OnLogoutClicked()
+        {
+            // Limpar o token de acesso
+            Preferences.Remove("accesstoken");
+
+            // Redirecionar para a página de login
+            Application.Current!.MainPage = new NavigationPage(new LoginPage(_apiService, _apiWeatherService, _validator));
         }
     }
 }
