@@ -7,7 +7,7 @@
              NavigationPage.HasNavigationBar="False">
 
     <ScrollView>
-        <StackLayout Padding="20">
+        <StackLayout Padding="20" Spacing="10">
             <Label Text="Portugal"
                    FontAttributes="Bold"
                    FontSize="Medium"
@@ -19,20 +19,22 @@
                             SelectionChanged="OnCidadeSelected">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Horizontal"
-                                       ItemSpacing="10"/>
+                                       ItemSpacing="10"
+                                       SnapPointsType="MandatorySingle"
+                                       SnapPointsAlignment="Center"/>
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Border StrokeShape="RoundRectangle 10,10,10,10">
                             <Grid>
                                 <Image Aspect="Fill"
-                                       HeightRequest="120"
-                                       WidthRequest="120"
+                                       HeightRequest="168"
+                                       WidthRequest="168"
                                        Source="{Binding CaminhoImagem}"/>
                                 <Label TextColor="White"
                                        HorizontalTextAlignment="Center"
                                        VerticalTextAlignment="Center"
-                                       FontSize="14"
+                                       FontSize="16"
                                        BackgroundColor="#3B5A2A"
                                        Padding="5,5"
                                        VerticalOptions="End"
@@ -55,20 +57,22 @@
                             SelectionChanged="OnCidadeSelected">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Horizontal"
-                                       ItemSpacing="10"/>
+                                       ItemSpacing="10"
+                                       SnapPointsType="MandatorySingle"
+                                       SnapPointsAlignment="Center"/>
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Border StrokeShape="RoundRectangle 10,10,10,10">
                             <Grid>
                                 <Image Aspect="Fill"
-                                       HeightRequest="120"
-                                       WidthRequest="120"
+                                       HeightRequest="170"
+                                       WidthRequest="170"
                                        Source="{Binding CaminhoImagem}"/>
                                 <Label TextColor="White"
                                        HorizontalTextAlignment="Center"
                                        VerticalTextAlignment="Center"
-                                       FontSize="14"
+                                       FontSize="16"
                                        BackgroundColor="#3B5A2A"
                                        Padding="5,5"
                                        VerticalOptions="End"
@@ -91,20 +95,22 @@
                             SelectionChanged="OnCidadeSelected">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Horizontal"
-                                       ItemSpacing="10"/>
+                                       ItemSpacing="10"
+                                       SnapPointsType="MandatorySingle"
+                                       SnapPointsAlignment="Center"/>
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Border StrokeShape="RoundRectangle 10,10,10,10">
                             <Grid>
                                 <Image Aspect="Fill"
-                                       HeightRequest="120"
-                                       WidthRequest="120"
+                                       HeightRequest="170"
+                                       WidthRequest="170"
                                        Source="{Binding CaminhoImagem}"/>
                                 <Label TextColor="White"
                                        HorizontalTextAlignment="Center"
                                        VerticalTextAlignment="Center"
-                                       FontSize="14"
+                                       FontSize="16"
                                        BackgroundColor="#3B5A2A"
                                        Padding="5,5"
                                        VerticalOptions="End"
