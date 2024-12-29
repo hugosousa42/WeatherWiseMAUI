@@ -2,6 +2,7 @@ using WeatherWiseMAUI.Models;
 using WeatherWiseMAUI.Services;
 using WeatherWiseMAUI.Validations;
 using System.Collections.ObjectModel;
+using System.Text;
 
 namespace WeatherWiseMAUI.Pages
 {
@@ -22,6 +23,9 @@ namespace WeatherWiseMAUI.Pages
             _apiWeatherService = apiWeatherService;
             _validator = validator;
 
+            // Garantir que a codificação UTF-8 está registrada
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+
             // Dados de exemplo com caminhos de imagens estáticas
             CidadesPortuguesas = new ObservableCollection<Cidade>
             {
@@ -31,10 +35,10 @@ namespace WeatherWiseMAUI.Pages
                 new Cidade { Nome = "Braga", CaminhoImagem = "braga.png" },
                 new Cidade { Nome = "Faro", CaminhoImagem = "faro.png" },
                 new Cidade { Nome = "Aveiro", CaminhoImagem = "aveiro.png" },
-                new Cidade { Nome = "Évora", CaminhoImagem = "evora.png" },
+                new Cidade { Nome = "Évora", CaminhoImagem = "evora.png" }, 
                 new Cidade { Nome = "Leiria", CaminhoImagem = "leiria.png" },
                 new Cidade { Nome = "Viseu", CaminhoImagem = "viseu.png" },
-                new Cidade { Nome = "Setúbal", CaminhoImagem = "setubal.png" }
+                new Cidade { Nome = "Setúbal", CaminhoImagem = "setubal.png" } 
             };
 
             CidadesEuropeias = new ObservableCollection<Cidade>
@@ -43,8 +47,8 @@ namespace WeatherWiseMAUI.Pages
                 new Cidade { Nome = "Paris", CaminhoImagem = "paris.png" },
                 new Cidade { Nome = "Londres", CaminhoImagem = "londres.png" },
                 new Cidade { Nome = "Berlim", CaminhoImagem = "berlim.png" },
-                new Cidade { Nome = "Milão", CaminhoImagem = "milao.png" },
-                new Cidade { Nome = "Amsterdã", CaminhoImagem = "amsterda.png" },
+                new Cidade { Nome = "Milão", CaminhoImagem = "milao.png" }, 
+                new Cidade { Nome = "Amsterdã", CaminhoImagem = "amsterda.png" }, 
                 new Cidade { Nome = "Bruxelas", CaminhoImagem = "bruxelas.png" },
                 new Cidade { Nome = "Viena", CaminhoImagem = "viena.png" },
                 new Cidade { Nome = "Praga", CaminhoImagem = "praga.png" },
@@ -65,6 +69,7 @@ namespace WeatherWiseMAUI.Pages
                 new Cidade { Nome = "Honolulu", CaminhoImagem = "honolulu.png" }
             };
 
+            // Definindo o contexto de dados para a página
             BindingContext = this;
         }
 
@@ -75,11 +80,14 @@ namespace WeatherWiseMAUI.Pages
                 var selectedCidade = e.CurrentSelection[0] as Cidade;
                 if (selectedCidade != null)
                 {
+                    // Obtendo dados meteorológicos para a cidade selecionada
                     var weatherData = await _apiWeatherService.GetWeatherAsync(selectedCidade.Nome);
+                    // Obtendo a URL da imagem da cidade
                     var cityImageUrl = await _apiWeatherService.GetCityImageAsync(selectedCidade.Nome);
                     if (weatherData != null)
                     {
                         weatherData.CityImageUrl = cityImageUrl;
+                        // Navegando para a página de detalhes da cidade
                         await Navigation.PushAsync(new DetalhesCidadePage(weatherData));
                     }
                 }

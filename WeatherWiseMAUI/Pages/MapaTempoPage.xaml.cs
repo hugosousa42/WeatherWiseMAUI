@@ -1,5 +1,7 @@
 using WeatherWiseMAUI.Services;
 using WeatherWiseMAUI.Models;
+using System.Text.Encodings.Web; 
+using System.Text.Json;
 
 namespace WeatherWiseMAUI.Pages
 {
@@ -63,6 +65,10 @@ namespace WeatherWiseMAUI.Pages
                 var weatherData = await _apiWeatherService.GetWeatherAsync(city);
                 if (weatherData != null)
                 {
+                    // Codificação UTF-8 para caracteres especiais
+                    var cityEncoded = JavaScriptEncoder.Default.Encode(city);
+                    var descriptionEncoded = JavaScriptEncoder.Default.Encode(weatherData.Weather[0].Description);
+
                     var pinScript = $@"
                         for (var i = 0; i < window.markers.length; i++) {{
                             window.markers[i].setMap(null);
@@ -72,11 +78,11 @@ namespace WeatherWiseMAUI.Pages
                         var marker = new google.maps.Marker({{
                             position: position,
                             map: window.map,
-                            title: '{city}'
+                            title: '{cityEncoded}'
                         }});
                         window.markers.push(marker);
                         var infoWindow = new google.maps.InfoWindow({{
-                            content: '<div class=""info-window-content""><strong>{city}</strong><br>Temperatura: {weatherData.Main.Temp}°C<br>Descrição: {weatherData.Weather[0].Description}<br>Umidade: {weatherData.Main.Humidity}%<br>Pressão: {weatherData.Main.Pressure} hPa<br>Vento: {weatherData.Wind.Speed} m/s</div>'
+                            content: '<div class=""info-window-content""><strong>{cityEncoded}</strong><br>Temperatura: {weatherData.Main.Temp}°C<br>Descrição: {descriptionEncoded}<br>Umidade: {weatherData.Main.Humidity}%<br>Pressão: {weatherData.Main.Pressure} hPa<br>Vento: {weatherData.Wind.Speed} m/s</div>'
                         }});
                         infoWindow.open(window.map, marker);
                         window.map.setCenter(position);";

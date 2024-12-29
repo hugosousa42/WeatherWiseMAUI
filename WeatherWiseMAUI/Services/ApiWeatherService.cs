@@ -19,7 +19,8 @@ namespace WeatherWiseMAUI.Services
             _logger = logger;
             _serializerOptions = new JsonSerializerOptions
             {
-                PropertyNameCaseInsensitive = true
+                PropertyNameCaseInsensitive = true,
+                Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping 
             };
         }
 

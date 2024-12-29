@@ -1,8 +1,5 @@
-using Microsoft.Maui.Controls;
-using System;
-using System.Threading.Tasks;
+using System.Text.Encodings.Web;
 using WeatherWiseMAUI.Services;
-using WeatherWiseMAUI.Models;
 
 namespace WeatherWiseMAUI.Pages
 {
@@ -34,8 +31,11 @@ namespace WeatherWiseMAUI.Pages
 
                 if (weatherData1 != null && weatherData2 != null)
                 {
-                    City1NameLabel.Text = weatherData1.Name;
-                    City2NameLabel.Text = weatherData2.Name;
+                    var city1Encoded = JavaScriptEncoder.Default.Encode(weatherData1.Name);
+                    var city2Encoded = JavaScriptEncoder.Default.Encode(weatherData2.Name);
+
+                    City1NameLabel.Text = city1Encoded;
+                    City2NameLabel.Text = city2Encoded;
 
                     City1TempLabel.Text = $"Temperatura: {weatherData1.Main.Temp}°C";
                     City2TempLabel.Text = $"Temperatura: {weatherData2.Main.Temp}°C";

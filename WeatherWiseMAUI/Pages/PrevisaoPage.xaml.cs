@@ -1,10 +1,6 @@
-using Microsoft.Maui.Controls;
-using System;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text.Encodings.Web;
 using WeatherWiseMAUI.Services;
-using WeatherWiseMAUI.Models;
 
 namespace WeatherWiseMAUI.Pages
 {
@@ -41,10 +37,12 @@ namespace WeatherWiseMAUI.Pages
                     {
                         if (forecast.Main != null && forecast.Weather != null && forecast.Weather.Count > 0)
                         {
+                            var descriptionEncoded = JavaScriptEncoder.Default.Encode(forecast.Weather[0].Description);
+
                             Forecasts.Add(new Forecast
                             {
                                 Temperature = $"{forecast.Main.Temp}°C",
-                                Description = forecast.Weather[0].Description,
+                                Description = descriptionEncoded,
                                 Time = UnixTimeStampToDateTime(forecast.Dt).ToString("HH:mm")
                             });
                         }
