@@ -24,6 +24,12 @@ namespace WeatherWiseMAUI.Pages
                 return;
             }
 
+            if (city1.Equals(city2, StringComparison.OrdinalIgnoreCase))
+            {
+                await DisplayAlert("Aviso", "As cidades comparadas são iguais. Por favor, insira nomes de cidades diferentes.", "OK");
+                return;
+            }
+
             try
             {
                 var weatherData1 = await _apiWeatherService.GetWeatherAsync(city1);
