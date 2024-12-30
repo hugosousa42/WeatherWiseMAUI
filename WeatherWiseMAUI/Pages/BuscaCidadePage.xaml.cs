@@ -15,7 +15,7 @@ namespace WeatherWiseMAUI.Pages
             InitializeComponent();
             _apiWeatherService = apiWeatherService;
             WeatherDataList = new ObservableCollection<WeatherData>();
-            WeatherListView.ItemsSource = WeatherDataList;
+            WeatherCollectionView.ItemsSource = WeatherDataList;
         }
 
         private async void OnSearchButtonClicked(object sender, EventArgs e)
@@ -46,9 +46,9 @@ namespace WeatherWiseMAUI.Pages
             }
         }
 
-        private async void OnItemTapped(object sender, ItemTappedEventArgs e)
+        private async void OnItemTapped(object sender, SelectionChangedEventArgs e)
         {
-            if (e.Item is WeatherData weatherData)
+            if (e.CurrentSelection.FirstOrDefault() is WeatherData weatherData)
             {
                 try
                 {

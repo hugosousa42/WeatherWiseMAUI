@@ -15,7 +15,7 @@ namespace WeatherWiseMAUI.Pages
             InitializeComponent();
             _apiWeatherService = apiWeatherService;
             Forecasts = new ObservableCollection<Forecast>();
-            ForecastListView.ItemsSource = Forecasts;
+            ForecastCollectionView.ItemsSource = Forecasts;
         }
 
         private async void OnSearchButtonClicked(object sender, EventArgs e)

@@ -8,5 +8,6 @@
        Shell.FlyoutBackgroundColor="#76c893"
        Shell.TabBarBackgroundColor="#A8D8B9"
        Shell.TabBarTitleColor="#3B5A2A"
-       Shell.TabBarUnselectedColor="#FFFFFF">
+       Shell.TabBarUnselectedColor="#FF027B65"
+       Shell.TabBarForegroundColor="Black">
 </Shell>

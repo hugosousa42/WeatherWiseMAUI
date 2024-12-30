@@ -15,32 +15,55 @@
         <Entry x:Name="CityEntry"
                Placeholder="Digite o nome da cidade"
                PlaceholderColor="#B0B0B0"
-               HorizontalOptions="FillAndExpand" />
+               HorizontalOptions="FillAndExpand"
+               Margin="0,10,0,10" />
         <Button Text="Pesquisar"
                 Clicked="OnSearchButtonClicked"
-                HorizontalOptions="Center" />
-        <ListView x:Name="WeatherListView"
-                  VerticalOptions="FillAndExpand"
-                  HorizontalOptions="FillAndExpand"
-                  ItemTapped="OnItemTapped">
-            <ListView.ItemTemplate>
+                HorizontalOptions="Center"
+                Margin="0,10,0,10" />
+        <CollectionView x:Name="WeatherCollectionView"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        SelectionMode="Single"
+                        SelectionChanged="OnItemTapped">
+            <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Padding="10">
-                            <Label Text="{Binding Name}"
-                                   FontAttributes="Bold"
-                                   FontSize="Medium"
-                                   TextColor="#3B5A2A" />
-                            <Label Text="{Binding Main.Temp, StringFormat='{0}°C'}"
-                                   FontSize="Small"
-                                   TextColor="#3B5A2A" />
-                            <Label Text="{Binding Weather[0].Description}"
-                                   FontSize="Small"
-                                   TextColor="#3B5A2A" />
-                        </StackLayout>
-                    </ViewCell>
+                    <Grid Padding="10">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup Name="CommonStates">
+                                <VisualState Name="Normal">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="Transparent" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState Name="Selected">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="#A8D8B9" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label Text="{Binding Name}"
+                               FontAttributes="Bold"
+                               FontSize="Medium"
+                               TextColor="#3B5A2A"
+                               Grid.Row="0" />
+                        <Label Text="{Binding Main.Temp, StringFormat='{0}°C'}"
+                               FontSize="Small"
+                               TextColor="#3B5A2A"
+                               Grid.Row="1" />
+                        <Label Text="{Binding Weather[0].Description}"
+                               FontSize="Small"
+                               TextColor="#3B5A2A"
+                               Grid.Row="2" />
+                    </Grid>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </StackLayout>
 </ContentPage>

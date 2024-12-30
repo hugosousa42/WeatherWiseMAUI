@@ -30,7 +30,7 @@
                FontSize="Medium"
                TextColor="#3B5A2A"
                HorizontalOptions="Center" />
-        <Label Text="Versão: 1.0.2"
+        <Label Text="Versão: 1.0.4"
                FontSize="Medium"
                TextColor="#3B5A2A"
                HorizontalOptions="Center" />
