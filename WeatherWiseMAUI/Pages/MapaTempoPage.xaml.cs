@@ -29,7 +29,7 @@ namespace WeatherWiseMAUI.Pages
                             html, body, #map {{ height: 100%; margin: 0; padding: 0; }}
                             .info-window-content {{ font-size: 16px; }}
                         </style>
-                        <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDnrR58VUp7Rvyseh3Ot1lr_YHBeULmLG8'></script>
+                        <script src='https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE'></script>
                         <script type='text/javascript'>
                             function initialize() {{
                                 var mapOptions = {{

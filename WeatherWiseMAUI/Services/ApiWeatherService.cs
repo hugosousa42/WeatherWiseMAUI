@@ -7,8 +7,8 @@ namespace WeatherWiseMAUI.Services
     public class ApiWeatherService
     {
         private readonly HttpClient _httpClient;
-        private readonly string _apiKey = "4c324ec18c2d583aa51ffcedd83c981e";
-        private readonly string _pexelsApiKey = "oNG8D4iOEzv872MtCgyuAGHv2NngvOpR4fRKrWNenuATtFWMfohVx6eL";
+        private readonly string _apiKey = "yourOpenWeatherAPIKey";
+        private readonly string _pexelsApiKey = "yourPexelsAPIKey";
         private readonly ILogger<ApiWeatherService> _logger;
 
         JsonSerializerOptions _serializerOptions;
